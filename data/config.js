@@ -1,7 +1,7 @@
 const mysql = require("mysql");
 
 const apiconfig = {
-  host: "localhost",
+  host: "server231.hosting.reg.ru",
   user: "u1518696_default",
   password: "K88JBC3M4ZvmdXt9",
   database: "u1518696_api",
@@ -15,7 +15,7 @@ const apiconfig = {
 };
 
 const dbconfig = {
-  host: "localhost",
+  host: "server231.hosting.reg.ru",
   user: "u1518696_default",
   password: "K88JBC3M4ZvmdXt9",
   database: "u1518696_db",
