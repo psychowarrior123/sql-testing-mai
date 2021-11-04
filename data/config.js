@@ -1,10 +1,10 @@
 const mysql = require("mysql");
 
 const apiconfig = {
-  host: "server231.hosting.reg.ru",
-  user: "u1518696_default",
-  password: "K88JBC3M4ZvmdXt9",
-  database: "u1518696_api",
+  host: "us-cdbr-east-04.cleardb.com",
+  user: "b79658eacd04ae",
+  password: "4c525e4f",
+  database: "heroku_1e8fe0c5699d022",
   dialect: "mysql",
   pool: {
     max: 5,
@@ -15,10 +15,10 @@ const apiconfig = {
 };
 
 const dbconfig = {
-  host: "server231.hosting.reg.ru",
-  user: "u1518696_default",
-  password: "K88JBC3M4ZvmdXt9",
-  database: "u1518696_db",
+  host: "us-cdbr-east-04.cleardb.com",
+  user: "bfb3fc03be378c",
+  password: "6f00e9c9",
+  database: "heroku_9720cba118023c5",
   dialect: "mysql",
   pool: {
     max: 5,
