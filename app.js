@@ -2,6 +2,7 @@ const express = require("express");
 const config = require("config");
 const { dbconfig } = require("./data/config");
 const mysql = require("mysql");
+const path = require("path");
 const db = require("./models");
 
 const app = express();
@@ -13,6 +14,14 @@ app.use("/api/tables", require("./routes/tables.routes"));
 app.use("/api/tasks", require("./routes/tasks.routes"));
 app.use("/api/test", require("./routes/test.routes"));
 app.use("/api/marks", require("./routes/mark.routes"));
+
+if (process.env.NODE_ENV === "production") {
+  app.use("/", express.static(path.join(__dirname, "client", "build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 const PORT = config.get("port") || 5000;
 
