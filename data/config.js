@@ -2,9 +2,9 @@ const mysql = require("mysql");
 
 const apiconfig = {
   host: "localhost",
-  user: "root",
-  password: "root",
-  database: "api",
+  user: "u1518696_default",
+  password: "K88JBC3M4ZvmdXt9",
+  database: "u1518696_api",
   dialect: "mysql",
   pool: {
     max: 5,
@@ -16,9 +16,9 @@ const apiconfig = {
 
 const dbconfig = {
   host: "localhost",
-  user: "root",
-  password: "root",
-  database: "db",
+  user: "u1518696_default",
+  password: "K88JBC3M4ZvmdXt9",
+  database: "u1518696_db",
   dialect: "mysql",
   pool: {
     max: 5,
