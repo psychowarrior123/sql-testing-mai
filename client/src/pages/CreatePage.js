@@ -148,257 +148,259 @@ export const CreatePage = () => {
       <div>
         <h1 className="white-text">Добавить задание</h1>
         <Container className="row">
+          <Col className="white-text" s={12} m={8} l={8} xl={8}>
+            <form onSubmit={submitHandler}>
+              <Col className="white-text" s={12} m={12} l={12} xl={12}>
+                <h5 className="white-text text-bold">Новое задание</h5>
+                <Container>
+                  <Select
+                    name="type"
+                    id="select-type"
+                    label="Выберите тип задания"
+                    multiple={false}
+                    options={{
+                      classes: "",
+                      dropdownOptions: {
+                        alignment: "left",
+                        autoTrigger: true,
+                        closeOnClick: true,
+                        constrainWidth: true,
+                        coverTrigger: true,
+                        hover: false,
+                        inDuration: 150,
+                        onCloseEnd: null,
+                        onCloseStart: null,
+                        onOpenEnd: null,
+                        onOpenStart: null,
+                        outDuration: 250,
+                      },
+                    }}
+                    value=""
+                    s={6}
+                    m={6}
+                    l={6}
+                    xl={6}
+                    onChange={(e) => setType(e.target.value)}
+                  >
+                    <option value="" disabled>
+                      Выберите тип задания
+                    </option>
+                    {types.map((type) => (
+                      <option value={type}>{type.toUpperCase()}</option>
+                    ))}
+                  </Select>
+                  <Select
+                    name="difficulty"
+                    id="select-type"
+                    label="Выберите сложность"
+                    multiple={false}
+                    options={{
+                      classes: "",
+                      dropdownOptions: {
+                        alignment: "left",
+                        autoTrigger: true,
+                        closeOnClick: true,
+                        constrainWidth: true,
+                        coverTrigger: true,
+                        hover: false,
+                        inDuration: 150,
+                        onCloseEnd: null,
+                        onCloseStart: null,
+                        onOpenEnd: null,
+                        onOpenStart: null,
+                        outDuration: 250,
+                      },
+                    }}
+                    value=""
+                    s={6}
+                    m={6}
+                    l={6}
+                    xl={6}
+                    onChange={changeHandler}
+                  >
+                    <option value="" disabled>
+                      Выберите сложность
+                    </option>
+                    <option value="easy">Легко</option>
+                    <option value="medium">Средне</option>
+                    <option value="hard">Тяжело</option>
+                  </Select>
+                  <Textarea
+                    data-length={1200}
+                    l={6}
+                    m={6}
+                    s={12}
+                    xl={6}
+                    label="Введите текст задания"
+                    name="text"
+                    onChange={changeHandler}
+                  />
+                  <Textarea
+                    data-length={1200}
+                    l={6}
+                    m={6}
+                    s={12}
+                    xl={6}
+                    label="Введите ответ"
+                    name="query"
+                    onChange={changeHandler}
+                  />
+                </Container>
+                <Button
+                  large
+                  node="button"
+                  waves="dark"
+                  className="rounded yellow black-text"
+                >
+                  Добавить задание
+                  <Icon right>add</Icon>
+                </Button>
+              </Col>
+            </form>
+            <form onSubmit={submitUpdateHandler}>
+              <Col className="white-text" s={12} m={12} l={12} xl={12}>
+                <h5 className="white-text text-bold">Изменить задание</h5>
+                <Container>
+                  <TextInput
+                    s={2}
+                    m={2}
+                    l={2}
+                    xl={2}
+                    label="Введите ID"
+                    className="yellow-input"
+                    type="number"
+                    onChange={(e) => setId(e.target.value)}
+                  />
+                  <Select
+                    name="type"
+                    id="select-type"
+                    label="Выберите тип задания"
+                    multiple={false}
+                    options={{
+                      classes: "",
+                      dropdownOptions: {
+                        alignment: "left",
+                        autoTrigger: true,
+                        closeOnClick: true,
+                        constrainWidth: true,
+                        coverTrigger: true,
+                        hover: false,
+                        inDuration: 150,
+                        onCloseEnd: null,
+                        onCloseStart: null,
+                        onOpenEnd: null,
+                        onOpenStart: null,
+                        outDuration: 250,
+                      },
+                    }}
+                    value=""
+                    s={5}
+                    m={5}
+                    l={5}
+                    xl={5}
+                    onChange={(e) => setUpdateType(e.target.value)}
+                  >
+                    <option value="" disabled>
+                      Выберите тип задания
+                    </option>
+                    {types.map((type) => (
+                      <option value={type}>{type.toUpperCase()}</option>
+                    ))}
+                  </Select>
+                  <Select
+                    name="difficulty"
+                    id="select-type"
+                    label="Выберите сложность"
+                    multiple={false}
+                    options={{
+                      classes: "",
+                      dropdownOptions: {
+                        alignment: "left",
+                        autoTrigger: true,
+                        closeOnClick: true,
+                        constrainWidth: true,
+                        coverTrigger: true,
+                        hover: false,
+                        inDuration: 150,
+                        onCloseEnd: null,
+                        onCloseStart: null,
+                        onOpenEnd: null,
+                        onOpenStart: null,
+                        outDuration: 250,
+                      },
+                    }}
+                    value=""
+                    s={5}
+                    m={5}
+                    l={5}
+                    xl={5}
+                    onChange={changeHandlerUpdate}
+                  >
+                    <option value="" disabled>
+                      Выберите сложность
+                    </option>
+                    <option value="easy">Легко</option>
+                    <option value="medium">Средне</option>
+                    <option value="hard">Тяжело</option>
+                  </Select>
+                  <Textarea
+                    data-length={1200}
+                    l={6}
+                    m={6}
+                    s={12}
+                    xl={6}
+                    label="Введите новый текст задания"
+                    name="text"
+                    onChange={changeHandlerUpdate}
+                  />
+                  <Textarea
+                    data-length={1200}
+                    l={6}
+                    m={6}
+                    s={12}
+                    xl={6}
+                    label="Введите новый ответ"
+                    name="query"
+                    onChange={changeHandlerUpdate}
+                  />
+                  <Col s={6} m={6} l={6} xl={6}>
+                    <Button
+                      large
+                      node="button"
+                      waves="dark"
+                      className="rounded yellow black-text"
+                      type="submit"
+                    >
+                      Изменить задание
+                      <Icon right>update</Icon>
+                    </Button>
+                  </Col>
+                  <Col s={6} m={6} l={6} xl={6}>
+                    <Button
+                      large
+                      node="button"
+                      waves="dark"
+                      className="rounded yellow black-text"
+                      onClick={async () => {
+                        const { data } = await axios.delete(
+                          `/api/tasks/${updateType}/${id}`
+                        );
+                        await refetch();
+                        message(data.message);
+                      }}
+                    >
+                      Удалить задание
+                      <Icon right>delete_forever</Icon>
+                    </Button>
+                  </Col>
+                </Container>
+              </Col>
+            </form>
+          </Col>
           <Col className="transparent white-text" s={12} m={4} l={4} xl={4}>
             <h5 className="text-bold">Доступные таблицы</h5>
             {renderTables}
           </Col>
-          <form onSubmit={submitHandler}>
-            <Col className="white-text" s={12} m={8} l={8} xl={8}>
-              <h5 className="white-text text-bold">Новое задание</h5>
-              <Container>
-                <Select
-                  name="type"
-                  id="select-type"
-                  label="Выберите тип задания"
-                  multiple={false}
-                  options={{
-                    classes: "",
-                    dropdownOptions: {
-                      alignment: "left",
-                      autoTrigger: true,
-                      closeOnClick: true,
-                      constrainWidth: true,
-                      coverTrigger: true,
-                      hover: false,
-                      inDuration: 150,
-                      onCloseEnd: null,
-                      onCloseStart: null,
-                      onOpenEnd: null,
-                      onOpenStart: null,
-                      outDuration: 250,
-                    },
-                  }}
-                  value=""
-                  s={6}
-                  m={6}
-                  l={6}
-                  xl={6}
-                  onChange={(e) => setType(e.target.value)}
-                >
-                  <option value="" disabled>
-                    Выберите тип задания
-                  </option>
-                  {types.map((type) => (
-                    <option value={type}>{type.toUpperCase()}</option>
-                  ))}
-                </Select>
-                <Select
-                  name="difficulty"
-                  id="select-type"
-                  label="Выберите сложность"
-                  multiple={false}
-                  options={{
-                    classes: "",
-                    dropdownOptions: {
-                      alignment: "left",
-                      autoTrigger: true,
-                      closeOnClick: true,
-                      constrainWidth: true,
-                      coverTrigger: true,
-                      hover: false,
-                      inDuration: 150,
-                      onCloseEnd: null,
-                      onCloseStart: null,
-                      onOpenEnd: null,
-                      onOpenStart: null,
-                      outDuration: 250,
-                    },
-                  }}
-                  value=""
-                  s={6}
-                  m={6}
-                  l={6}
-                  xl={6}
-                  onChange={changeHandler}
-                >
-                  <option value="" disabled>
-                    Выберите сложность
-                  </option>
-                  <option value="easy">Легко</option>
-                  <option value="medium">Средне</option>
-                  <option value="hard">Тяжело</option>
-                </Select>
-                <Textarea
-                  data-length={1200}
-                  l={6}
-                  m={6}
-                  s={6}
-                  xl={6}
-                  label="Введите текст задания"
-                  name="text"
-                  onChange={changeHandler}
-                />
-                <Textarea
-                  data-length={1200}
-                  l={6}
-                  m={6}
-                  s={6}
-                  xl={6}
-                  label="Введите ответ"
-                  name="query"
-                  onChange={changeHandler}
-                />
-              </Container>
-            </Col>
-            <Button
-              large
-              node="button"
-              waves="dark"
-              className="rounded yellow black-text"
-            >
-              Добавить задание
-              <Icon right>add</Icon>
-            </Button>
-          </form>
-          <form onSubmit={submitUpdateHandler}>
-            <Col className="white-text" s={8}>
-              <h5 className="white-text text-bold">Изменить задание</h5>
-              <Container>
-                <TextInput
-                  s={2}
-                  m={2}
-                  l={2}
-                  xl={2}
-                  label="Введите ID"
-                  className="yellow-input"
-                  type="number"
-                  onChange={(e) => setId(e.target.value)}
-                />
-                <Select
-                  name="type"
-                  id="select-type"
-                  label="Выберите тип задания"
-                  multiple={false}
-                  options={{
-                    classes: "",
-                    dropdownOptions: {
-                      alignment: "left",
-                      autoTrigger: true,
-                      closeOnClick: true,
-                      constrainWidth: true,
-                      coverTrigger: true,
-                      hover: false,
-                      inDuration: 150,
-                      onCloseEnd: null,
-                      onCloseStart: null,
-                      onOpenEnd: null,
-                      onOpenStart: null,
-                      outDuration: 250,
-                    },
-                  }}
-                  value=""
-                  s={5}
-                  m={5}
-                  l={5}
-                  xl={5}
-                  onChange={(e) => setUpdateType(e.target.value)}
-                >
-                  <option value="" disabled>
-                    Выберите тип задания
-                  </option>
-                  {types.map((type) => (
-                    <option value={type}>{type.toUpperCase()}</option>
-                  ))}
-                </Select>
-                <Select
-                  name="difficulty"
-                  id="select-type"
-                  label="Выберите сложность"
-                  multiple={false}
-                  options={{
-                    classes: "",
-                    dropdownOptions: {
-                      alignment: "left",
-                      autoTrigger: true,
-                      closeOnClick: true,
-                      constrainWidth: true,
-                      coverTrigger: true,
-                      hover: false,
-                      inDuration: 150,
-                      onCloseEnd: null,
-                      onCloseStart: null,
-                      onOpenEnd: null,
-                      onOpenStart: null,
-                      outDuration: 250,
-                    },
-                  }}
-                  value=""
-                  s={5}
-                  m={5}
-                  l={5}
-                  xl={5}
-                  onChange={changeHandlerUpdate}
-                >
-                  <option value="" disabled>
-                    Выберите сложность
-                  </option>
-                  <option value="easy">Легко</option>
-                  <option value="medium">Средне</option>
-                  <option value="hard">Тяжело</option>
-                </Select>
-                <Textarea
-                  data-length={1200}
-                  l={6}
-                  m={6}
-                  s={6}
-                  xl={6}
-                  label="Введите новый текст задания"
-                  name="text"
-                  onChange={changeHandlerUpdate}
-                />
-                <Textarea
-                  data-length={1200}
-                  l={6}
-                  m={6}
-                  s={6}
-                  xl={6}
-                  label="Введите новый ответ"
-                  name="query"
-                  onChange={changeHandlerUpdate}
-                />
-              </Container>
-            </Col>
-            <Col s={4}>
-              <Button
-                large
-                node="button"
-                waves="dark"
-                className="rounded yellow black-text"
-                type="submit"
-              >
-                Изменить задание
-                <Icon right>update</Icon>
-              </Button>
-            </Col>
-            <Col s={4}>
-              <Button
-                large
-                node="button"
-                waves="dark"
-                className="rounded yellow black-text"
-                onClick={async () => {
-                  const { data } = await axios.delete(
-                    `/api/tasks/${updateType}/${id}`
-                  );
-                  await refetch();
-                  message(data.message);
-                }}
-              >
-                Удалить задание
-                <Icon right>delete_forever</Icon>
-              </Button>
-            </Col>
-          </form>
         </Container>
       </div>
     )
