@@ -16,17 +16,6 @@ import DataGrid from "react-data-grid";
 import { minHeights } from "./TablesPage";
 import M from "materialize-css";
 
-const Container = styled.div`
-  padding: 12px;
-  margin: 12px;
-`;
-
-const ButtonGroup = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-`;
-
 const types = ["queries", "groups", "manipulates", "functions", "subqueries"];
 
 export const CreatePage = () => {
@@ -147,12 +136,12 @@ export const CreatePage = () => {
     tables && (
       <div>
         <h1 className="white-text">Добавить задание</h1>
-        <Container className="row">
+        <div className="row">
           <Col className="white-text" s={12} m={8} l={8} xl={8}>
             <form onSubmit={submitHandler}>
               <Col className="white-text" s={12} m={12} l={12} xl={12}>
                 <h5 className="white-text text-bold">Новое задание</h5>
-                <Container>
+                <div>
                   <Select
                     name="type"
                     id="select-type"
@@ -245,7 +234,7 @@ export const CreatePage = () => {
                     name="query"
                     onChange={changeHandler}
                   />
-                </Container>
+                </div>
                 <Button
                   large
                   node="button"
@@ -260,7 +249,7 @@ export const CreatePage = () => {
             <form onSubmit={submitUpdateHandler}>
               <Col className="white-text" s={12} m={12} l={12} xl={12}>
                 <h5 className="white-text text-bold">Изменить задание</h5>
-                <Container>
+                <div>
                   <TextInput
                     s={2}
                     m={2}
@@ -393,7 +382,7 @@ export const CreatePage = () => {
                       <Icon right>delete_forever</Icon>
                     </Button>
                   </Col>
-                </Container>
+                </div>
               </Col>
             </form>
           </Col>
@@ -401,7 +390,7 @@ export const CreatePage = () => {
             <h5 className="text-bold">Доступные таблицы</h5>
             {renderTables}
           </Col>
-        </Container>
+        </div>
       </div>
     )
   );
