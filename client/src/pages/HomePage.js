@@ -79,7 +79,11 @@ export const HomePage = () => {
       <Container className="row">
         {profile?.role === "student"
           ? marks && (
-              <div className={`col ${marksColumns.length <= 6 ? "s6" : "s12"}`}>
+              <div
+                className={`col ${
+                  marksColumns.length <= 6 ? "s12 m6 l6 xl6" : "s12"
+                }`}
+              >
                 <h6 className="text-bold white-text">Мои результаты</h6>
                 <DataGrid
                   style={{ minHeight: minHeights(marksRows.length) }}
@@ -115,7 +119,7 @@ export const HomePage = () => {
             )
           : students && (
               <>
-                <div className="col s3">
+                <div className="col s6 m3 l3 xl3">
                   <h6 className="text-bold white-text">Мои студенты</h6>
                   <DataGrid
                     style={{ minHeight: minHeights(studentsRows?.length) }}
@@ -143,7 +147,7 @@ export const HomePage = () => {
                   />
                 </div>
                 {marks && (
-                  <div className="col s9">
+                  <div className="col s6 m9 l9 xl9">
                     <h6 className="text-bold white-text">
                       Результаты студента
                     </h6>

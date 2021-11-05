@@ -80,7 +80,11 @@ export const TablesPage = () => {
         }));
         const rows = value;
         return (
-          <div className={`col ${columns.length <= 6 ? "s6" : "s12"}`}>
+          <div
+            className={`col ${
+              columns.length <= 6 ? "s12 l6 xl6 m6" : "s12 l12 xl12 m12"
+            }`}
+          >
             <h6 className="text-bold white-text" id={key}>
               {key}
             </h6>

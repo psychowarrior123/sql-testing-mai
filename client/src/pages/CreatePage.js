@@ -148,12 +148,12 @@ export const CreatePage = () => {
       <div>
         <h1 className="white-text">Добавить задание</h1>
         <Container className="row">
-          <Col className="transparent white-text" s={4}>
+          <Col className="transparent white-text" s={12} m={4} l={4} xl={4}>
             <h5 className="text-bold">Доступные таблицы</h5>
             {renderTables}
           </Col>
           <form onSubmit={submitHandler}>
-            <Col className="white-text" s={8}>
+            <Col className="white-text" s={12} m={8} l={8} xl={8}>
               <h5 className="white-text text-bold">Новое задание</h5>
               <Container>
                 <Select
