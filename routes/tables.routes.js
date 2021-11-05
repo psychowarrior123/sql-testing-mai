@@ -8,7 +8,7 @@ const router = Router();
 router.get("/", async (req, res) => {
   try {
     pool.query(
-      "select * from information_schema.columns where table_schema = 'db'",
+      "select * from information_schema.columns where table_schema = 'heroku_9720cba118023c5'",
       (error, results) => {
         if (error) throw error;
 
