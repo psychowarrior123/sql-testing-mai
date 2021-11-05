@@ -40,6 +40,82 @@ export const Navbar = () => {
       <>
         <NavbarContainer>
           <div className="nav-wrapper">
+            {/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
+              navigator.userAgent
+            ) && (
+              <SideNav
+                id="navbar"
+                options={{
+                  draggable: true,
+                }}
+                trigger={
+                  <Button node="button" className="transparent">
+                    <Icon>menu</Icon>
+                  </Button>
+                }
+              >
+                <SideNavItem
+                  user={{
+                    background: "https://placeimg.com/640/480/tech",
+                    email: auth.profile.email,
+                    name: auth.profile.fullname,
+                  }}
+                  userView
+                />
+                <SideNavItem
+                  href="/"
+                  className="black-text waves-effect text-bold"
+                >
+                  Главная
+                </SideNavItem>
+                {auth.profile.role === "student" && (
+                  <SideNavItem
+                    href="/test"
+                    className="black-text waves-effect text-bold"
+                  >
+                    Начать тест
+                  </SideNavItem>
+                )}
+                {auth.profile.role === "teacher" && (
+                  <SideNavItem
+                    href="/create"
+                    className="black-text waves-effect text-bold"
+                  >
+                    Создать тест
+                  </SideNavItem>
+                )}
+                <SideNavItem
+                  href="/tables"
+                  className="black-text waves-effect text-bold"
+                >
+                  Структуры таблиц
+                </SideNavItem>
+                <SideNavItem divider />
+                <SideNavItem
+                  href="/"
+                  onClick={logoutHandler}
+                  className="black-text"
+                  waves
+                >
+                  <i className="material-icons">exit_to_app</i>Выйти
+                </SideNavItem>
+                <SideNavItem subheader>
+                  <span className="black-text">
+                    Phone number:{" "}
+                    {auth.profile.phone_number !== ""
+                      ? auth.profile.phone_number
+                      : "--"}
+                  </span>
+                  <br />
+                  <span className="black-text">Role: {auth.profile.role}</span>
+                  <br />
+                  <span className="black-text">
+                    Group: {auth.profile.study_group}
+                  </span>
+                  <br />
+                </SideNavItem>
+              </SideNav>
+            )}
             <span className="brand-logo text-bold black-text">
               Тестирование SQL
             </span>
@@ -121,75 +197,6 @@ export const Navbar = () => {
             </ul>
           </div>
         </NavbarContainer>
-        <SideNav
-          id="navbar"
-          options={{
-            draggable: true,
-          }}
-          trigger={
-            <Button node="button" className="transparent">
-              <Icon>menu</Icon>
-            </Button>
-          }
-        >
-          <SideNavItem
-            user={{
-              background: "https://placeimg.com/640/480/tech",
-              email: auth.profile.email,
-              name: auth.profile.fullname,
-            }}
-            userView
-          />
-          <SideNavItem href="/" className="black-text waves-effect text-bold">
-            Главная
-          </SideNavItem>
-          {auth.profile.role === "student" && (
-            <SideNavItem
-              href="/test"
-              className="black-text waves-effect text-bold"
-            >
-              Начать тест
-            </SideNavItem>
-          )}
-          {auth.profile.role === "teacher" && (
-            <SideNavItem
-              href="/create"
-              className="black-text waves-effect text-bold"
-            >
-              Создать тест
-            </SideNavItem>
-          )}
-          <SideNavItem
-            href="/tables"
-            className="black-text waves-effect text-bold"
-          >
-            Структуры таблиц
-          </SideNavItem>
-          <SideNavItem divider />
-          <SideNavItem
-            href="/"
-            onClick={logoutHandler}
-            className="black-text"
-            waves
-          >
-            <i className="material-icons">exit_to_app</i>Выйти
-          </SideNavItem>
-          <SideNavItem subheader>
-            <span className="black-text">
-              Phone number:{" "}
-              {auth.profile.phone_number !== ""
-                ? auth.profile.phone_number
-                : "--"}
-            </span>
-            <br />
-            <span className="black-text">Role: {auth.profile.role}</span>
-            <br />
-            <span className="black-text">
-              Group: {auth.profile.study_group}
-            </span>
-            <br />
-          </SideNavItem>
-        </SideNav>
       </>
     )
   );
