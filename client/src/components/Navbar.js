@@ -101,6 +101,9 @@ export const Navbar = () => {
                   Phone number: {auth.profile.phone_number}
                 </span>
                 <span className="black-text">Role: {auth.profile.role}</span>
+                <span className="black-text">
+                  Group: {auth.profile.study_group}
+                </span>
                 <a href="/" onClick={logoutHandler} className="black-text">
                   <i className="material-icons">exit_to_app</i>Выйти
                 </a>

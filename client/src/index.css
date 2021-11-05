@@ -106,7 +106,7 @@ code {
 }
 
 .select-wrapper ul li>span {
-  background-color: rgba(255,235,59,0.7);
+  background-color: rgba(255,235,59,0.85);
   color: black;
 }
 .select-wrapper ul li.disabled>span {
