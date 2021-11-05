@@ -43,86 +43,84 @@ export const Navbar = () => {
             {/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
               navigator.userAgent
             ) && (
-              <>
-                <SideNav
-                  id="navbar"
-                  options={{
-                    draggable: true,
+              <SideNav
+                id="navbar"
+                options={{
+                  draggable: true,
+                }}
+                trigger={
+                  <Button node="button" className="transparent">
+                    <Icon>menu</Icon>
+                  </Button>
+                }
+              >
+                <SideNavItem
+                  user={{
+                    background: "https://placeimg.com/640/480/tech",
+                    email: auth.profile.email,
+                    name: auth.profile.fullname,
                   }}
-                  trigger={
-                    <Button node="button" className="transparent">
-                      <Icon>menu</Icon>
-                    </Button>
-                  }
+                  userView
+                />
+                <SideNavItem
+                  href="/"
+                  className="black-text waves-effect text-bold"
                 >
+                  Главная
+                </SideNavItem>
+                {auth.profile.role === "student" && (
                   <SideNavItem
-                    user={{
-                      background: "https://placeimg.com/640/480/tech",
-                      email: auth.profile.email,
-                      name: auth.profile.fullname,
-                    }}
-                    userView
-                  />
-                  <SideNavItem
-                    href="/"
+                    href="/test"
                     className="black-text waves-effect text-bold"
                   >
-                    Главная
+                    Начать тест
                   </SideNavItem>
-                  {auth.profile.role === "student" && (
-                    <SideNavItem
-                      href="/test"
-                      className="black-text waves-effect text-bold"
-                    >
-                      Начать тест
-                    </SideNavItem>
-                  )}
-                  {auth.profile.role === "teacher" && (
-                    <SideNavItem
-                      href="/create"
-                      className="black-text waves-effect text-bold"
-                    >
-                      Создать тест
-                    </SideNavItem>
-                  )}
+                )}
+                {auth.profile.role === "teacher" && (
                   <SideNavItem
-                    href="/tables"
+                    href="/create"
                     className="black-text waves-effect text-bold"
                   >
-                    Структуры таблиц
+                    Создать тест
                   </SideNavItem>
-                  <SideNavItem divider />
-                  <SideNavItem
-                    href="/"
-                    onClick={logoutHandler}
-                    className="black-text"
-                    waves
-                  >
-                    <i className="material-icons">exit_to_app</i>Выйти
-                  </SideNavItem>
-                  <SideNavItem subheader>
-                    <span className="black-text">
-                      Phone number:{" "}
-                      {auth.profile.phone_number !== ""
-                        ? auth.profile.phone_number
-                        : "--"}
-                    </span>
-                    <br />
-                    <span className="black-text">
-                      Role: {auth.profile.role}
-                    </span>
-                    <br />
-                    <span className="black-text">
-                      Group: {auth.profile.study_group}
-                    </span>
-                    <br />
-                  </SideNavItem>
-                </SideNav>
-                <span className="text-bold black-text">Тестирование SQL</span>
-              </>
+                )}
+                <SideNavItem
+                  href="/tables"
+                  className="black-text waves-effect text-bold"
+                >
+                  Структуры таблиц
+                </SideNavItem>
+                <SideNavItem divider />
+                <SideNavItem
+                  href="/"
+                  onClick={logoutHandler}
+                  className="black-text"
+                  waves
+                >
+                  <i className="material-icons">exit_to_app</i>Выйти
+                </SideNavItem>
+                <SideNavItem subheader>
+                  <span className="black-text">
+                    Phone number:{" "}
+                    {auth.profile.phone_number !== ""
+                      ? auth.profile.phone_number
+                      : "--"}
+                  </span>
+                  <br />
+                  <span className="black-text">Role: {auth.profile.role}</span>
+                  <br />
+                  <span className="black-text">
+                    Group: {auth.profile.study_group}
+                  </span>
+                  <br />
+                </SideNavItem>
+              </SideNav>
             )}
             <span className="brand-logo text-bold black-text">
-              Тестирование SQL
+              {!/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(
+                navigator.userAgent
+              ) && "Тестирование"}{" "}
+              SQL
             </span>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <li>
