@@ -1,11 +1,4 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
-import DataGrid, { Row } from "react-data-grid";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { useMessage } from "../../hooks/message.hook";
 import axios from "axios";
@@ -39,12 +32,11 @@ export const TestPage = () => {
   };
 
   const submitResults = async () => {
-    const data = axios.post("api/marks", {
+    const { data } = axios.post("api/marks", {
       fullname,
       mark: `${testResults}/${allTasks}`,
     });
-    console.log(data);
-    //message(message);
+    message(data.message);
     dropTasks();
     history.push("/");
   };
@@ -52,16 +44,18 @@ export const TestPage = () => {
   return (
     <div>
       <h4 className="text-bold white-text">Тест</h4>
-      <Button
-        large
-        node="button"
-        waves="dark"
-        className="rounded yellow black-text"
-        onClick={refetch}
-      >
-        Начать тест
-        <Icon right>create</Icon>
-      </Button>
+      {!tasks && (
+        <Button
+          large
+          node="button"
+          waves="dark"
+          className="rounded yellow black-text"
+          onClick={refetch}
+        >
+          Начать тест
+          <Icon right>create</Icon>
+        </Button>
+      )}
       {tasks && (
         <Container className="row">
           <Collection>

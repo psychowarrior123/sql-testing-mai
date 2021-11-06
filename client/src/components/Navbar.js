@@ -2,13 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import styled from "styled-components";
-import {
-  Button,
-  Dropdown,
-  Icon,
-  SideNav,
-  SideNavItem,
-} from "react-materialize";
+import { Button, Dropdown, Icon, SideNavItem } from "react-materialize";
 
 const DesktopNavbar = styled.nav`
   padding: 0 2rem;
@@ -38,8 +32,9 @@ export const Navbar = () => {
     ) ? (
       <MobileNavbar>
         <div className="nav-wrapper">
-          <SideNav
-            id="navbar"
+          <ul
+            id="slide-out"
+            className="sidenav"
             options={{
               draggable: true,
             }}
@@ -49,14 +44,21 @@ export const Navbar = () => {
               </Button>
             }
           >
-            <SideNavItem
-              user={{
-                background: "https://placeimg.com/640/480/tech",
-                email: auth.profile.email,
-                name: auth.profile.fullname,
-              }}
-              userView
-            />
+            <li>
+              <div className="user-view">
+                <div className="background">
+                  <img src="https://placeimg.com/640/480/tech" />
+                </div>
+                <a>
+                  <span className="white-text name">
+                    {auth.profile.fullname}
+                  </span>
+                </a>
+                <a>
+                  <span className="white-text email">{auth.profile.email}</span>
+                </a>
+              </div>
+            </li>
             <SideNavItem href="/" className="black-text waves-effect text-bold">
               Главная
             </SideNavItem>
@@ -106,7 +108,14 @@ export const Navbar = () => {
               </span>
               <br />
             </SideNavItem>
-          </SideNav>
+          </ul>
+          <Button
+            node="a"
+            className="transparent sidenav-trigger"
+            data-target="slide-out"
+          >
+            <Icon>menu</Icon>
+          </Button>
           <span className="brand-logo text-bold black-text">SQL</span>
         </div>
       </MobileNavbar>

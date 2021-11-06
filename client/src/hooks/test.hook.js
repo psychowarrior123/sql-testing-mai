@@ -5,17 +5,19 @@ export const useTest = () => {
   const [allTasks, setAllTasks] = useState(0);
 
   const resultsIncrement = useCallback(() => {
-    setTestResults(testResults + 1);
+    const newResults = testResults + 1;
+    setTestResults(newResults);
   }, [testResults]);
 
   const tasksIncrement = useCallback(() => {
-    setAllTasks(allTasks + 1);
+    const newTasks = allTasks + 1;
+    setAllTasks(newTasks);
   }, [allTasks]);
 
   const dropTasks = useCallback(() => {
     setAllTasks(0);
     setTestResults(0);
-  });
+  }, []);
 
   return { testResults, resultsIncrement, allTasks, tasksIncrement, dropTasks };
 };

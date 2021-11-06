@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { Button, Col, CollectionItem, Row, Textarea } from "react-materialize";
-import styled from "styled-components";
 import axios from "axios";
 import { TestContext } from "../../../context/TestContext";
 
@@ -23,6 +22,21 @@ export const TaskCard = ({ data, isManipulate }) => {
       resultsIncrement();
     }
   };
+
+  const renderCheck = useMemo(
+    () =>
+      check &&
+      (check === "true" ? (
+        <Col s={1}>
+          <span className="green-text text-bold">ВЕРНО</span>
+        </Col>
+      ) : (
+        <Col s={1}>
+          <span className="red-text text-bold">НЕВЕРНО</span>
+        </Col>
+      )),
+    [check]
+  );
 
   return (
     <CollectionItem className="black">
@@ -57,16 +71,7 @@ export const TaskCard = ({ data, isManipulate }) => {
         >
           Ответ
         </Button>
-        {check &&
-          (check === "true" ? (
-            <Col s={1}>
-              <span className="green-text text-bold">ВЕРНО</span>
-            </Col>
-          ) : (
-            <Col s={1}>
-              <span className="red-text text-bold">НЕВЕРНО</span>
-            </Col>
-          ))}
+        {renderCheck}
       </Row>
     </CollectionItem>
   );
