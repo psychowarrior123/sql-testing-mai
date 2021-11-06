@@ -47,6 +47,8 @@ const handleDisconnect = () => {
     if (err.code === "PROTOCOL_CONNECTION_LOST") {
       // Connection to the MySQL server is usually
       handleDisconnect(); // lost due to either server restart, or a
+    } else if (err.code === "ER_USER_LIMIT_REACHED") {
+      handleDisconnect();
     } else {
       // connnection idle timeout (the wait_timeout
       throw err; // server variable configures this)
