@@ -63,6 +63,8 @@ router.post("/check", async (req, res) => {
       pool.query(check, (error, result) => {
         if (error) throw error;
 
+        console.log(result, check);
+
         data.check = result;
       });
       pool.query(answer, (error, result) => {
