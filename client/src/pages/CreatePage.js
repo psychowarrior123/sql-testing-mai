@@ -135,7 +135,7 @@ export const CreatePage = () => {
   return (
     tables && (
       <div>
-        <h1 className="white-text">Добавить задание</h1>
+        <h4 className="text-bold white-text">Управление заданиями</h4>
         <div className="row">
           <Col className="white-text" s={12} m={8} l={8} xl={8}>
             <form onSubmit={submitHandler}>

@@ -122,7 +122,7 @@ export const TablesPage = () => {
 
   return (
     <div>
-      <h1 className="white-text">Структуры таблиц</h1>
+      <h4 className="text-bold white-text">Структуры таблиц</h4>
       {profile.role === "teacher" && (
         <Button
           className="yellow"

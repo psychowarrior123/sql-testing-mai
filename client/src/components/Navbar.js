@@ -9,8 +9,6 @@ import {
   SideNav,
   SideNavItem,
 } from "react-materialize";
-import axios from "axios";
-import { useMessage } from "../hooks/message.hook";
 
 const DesktopNavbar = styled.nav`
   padding: 0 2rem;
@@ -19,11 +17,6 @@ const DesktopNavbar = styled.nav`
 
 const MobileNavbar = styled.nav`
   background-color: rgba(255, 235, 59, 0.5);
-`;
-
-const DropdownContainer = styled.div`
-  width: 300px !important;
-  border-radius: 0 0 5% 5%;
 `;
 
 export const Navbar = () => {
@@ -80,7 +73,7 @@ export const Navbar = () => {
                 href="/create"
                 className="black-text waves-effect text-bold"
               >
-                Создать тест
+                Управление заданиями
               </SideNavItem>
             )}
             <SideNavItem
@@ -103,7 +96,7 @@ export const Navbar = () => {
                 Phone number:{" "}
                 {auth.profile.phone_number !== ""
                   ? auth.profile.phone_number
-                  : "--"}
+                  : "——"}
               </span>
               <br />
               <span className="black-text">Role: {auth.profile.role}</span>
@@ -141,7 +134,7 @@ export const Navbar = () => {
                   to="/create"
                   className="black-text waves-effect text-bold"
                 >
-                  Создать тест
+                  Управление заданиями
                 </NavLink>
               )}
             </li>
@@ -185,7 +178,10 @@ export const Navbar = () => {
                 </span>
                 <span className="black-text">Email: {auth.profile.email}</span>
                 <span className="black-text">
-                  Phone number: {auth.profile.phone_number}
+                  Phone number:{" "}
+                  {auth.profile.phone_number !== ""
+                    ? auth.profile.phone_number
+                    : "——"}
                 </span>
                 <span className="black-text">Role: {auth.profile.role}</span>
                 <span className="black-text">

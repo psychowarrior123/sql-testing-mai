@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useHttp } from "../hooks/http.hook";
 import { useMessage } from "../hooks/message.hook";
 import { AuthContext } from "../context/AuthContext";
-import { Icon } from "react-materialize";
+import { Icon, TextInput } from "react-materialize";
 import axios from "axios";
 
 const LoginContainer = styled.div`
@@ -28,7 +28,7 @@ const SubmitButton = styled.button`
 
 export const LoginPage = () => {
   const history = useHistory();
-  const { loading, clearError, error } = useHttp();
+  const { loading, clearError, error, setErrorMessage } = useHttp();
   const auth = useContext(AuthContext);
   const message = useMessage();
   const [form, setForm] = useState({
@@ -54,7 +54,17 @@ export const LoginPage = () => {
     try {
       const { data } = await axios.post("/api/auth/login", { ...form });
       auth.login(data);
-    } catch (e) {}
+    } catch (e) {
+      setErrorMessage(
+        `${e.response.data.message}${
+          e.response.data.errors
+            ? `:<br />${e.response.data?.errors
+                ?.map((error) => `&emsp;- ${error?.msg}`)
+                .join("<br />")}`
+            : ""
+        }`
+      );
+    }
   };
   return (
     <>
@@ -66,33 +76,39 @@ export const LoginPage = () => {
       >
         <i className="material-icons left">arrow_back</i>Back
       </a>
-      <h1>Login Page</h1>
+      <h4 className="white-text text-bold">Вход</h4>
       <LoginContainer>
         <FormContainer className="row">
           <form className="col s12" onSubmit={submitHandler}>
             <div className="row">
-              <div className="input-field col s12">
-                <input
-                  id="email"
-                  type="email"
-                  className="validate yellow-input"
-                  onChange={changeHandler}
-                  name="email"
-                />
-                <label htmlFor="email">E-mail</label>
-              </div>
+              <TextInput
+                email
+                id="email"
+                label="Email"
+                validate
+                name="email"
+                onChange={changeHandler}
+                className="yellow-input"
+                s={12}
+                m={12}
+                l={12}
+                xl={12}
+              />
             </div>
             <div className="row">
-              <div className="input-field col s12">
-                <input
-                  id="password"
-                  type="password"
-                  className="validate yellow-input"
-                  onChange={changeHandler}
-                  name="password"
-                />
-                <label htmlFor="password">Password</label>
-              </div>
+              <TextInput
+                password
+                id="password"
+                label="Password"
+                validate
+                name="password"
+                onChange={changeHandler}
+                className="yellow-input"
+                s={12}
+                m={12}
+                l={12}
+                xl={12}
+              />
             </div>
             <SubmitButton
               className="btn waves-effect waves-light yellow rounded black-text"

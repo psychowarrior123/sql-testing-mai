@@ -27,14 +27,14 @@ export const TaskCard = ({ data, isManipulate }) => {
   return (
     <CollectionItem className="black">
       <Row>
-        <Col s={6}>
+        <Col s={12} m={6} l={6} xl={6}>
           <p className="white-text flow-text text-bold">{data?.text}</p>
         </Col>
         <Textarea
           data-length={1200}
           l={6}
           m={6}
-          s={6}
+          s={12}
           xl={6}
           label="Введите ответ"
           name="answer"
@@ -44,7 +44,7 @@ export const TaskCard = ({ data, isManipulate }) => {
         />
       </Row>
       <Row>
-        <Col s={6}>
+        <Col s={12} m={6} l={6} xl={6}>
           <span className="white-text">
             {data?.id}. {data?.query}
           </span>

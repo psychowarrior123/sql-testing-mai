@@ -74,7 +74,7 @@ export const HomePage = () => {
 
   return (
     <div>
-      <h1 className="white-text">Главная</h1>
+      <h4 className="text-bold white-text">Главная</h4>
 
       <Container className="row">
         {profile?.role === "student"

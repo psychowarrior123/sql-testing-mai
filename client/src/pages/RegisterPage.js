@@ -35,7 +35,7 @@ const SelectContainer = styled.select`
 
 export const RegisterPage = () => {
   const history = useHistory();
-  const { loading, clearError, error } = useHttp();
+  const { loading, clearError, error, setErrorMessage } = useHttp();
   const message = useMessage();
   const [form, setForm] = useState({
     email: "",
@@ -67,7 +67,17 @@ export const RegisterPage = () => {
       const { data } = await axios.post("/api/auth/register", { ...form });
       message(data.message);
       history.push("/login");
-    } catch (e) {}
+    } catch (e) {
+      setErrorMessage(
+        `${e.response.data.message}${
+          e.response.data.errors
+            ? `:<br />${e.response.data?.errors
+                ?.map((error) => `&emsp;- ${error?.msg}`)
+                .join("<br />")}`
+            : ""
+        }`
+      );
+    }
   };
 
   return (
@@ -80,7 +90,7 @@ export const RegisterPage = () => {
       >
         <i className="material-icons left">arrow_back</i>Back
       </a>
-      <h1>Register Page</h1>
+      <h4 className="white-text text-bold">Регистрация</h4>
       <RegisterContainer>
         <FormContainer className="row">
           <form className="col s12" onSubmit={submitHandler}>
@@ -92,6 +102,7 @@ export const RegisterPage = () => {
                   className="validate yellow-input"
                   name="fullname"
                   onChange={changeHandler}
+                  required={true}
                 />
                 <label htmlFor="fullname">ФИО</label>
               </div>
@@ -101,6 +112,7 @@ export const RegisterPage = () => {
                   id="role"
                   onChange={changeHandler}
                   className="yellow-input"
+                  required={true}
                 >
                   <option value="" disabled selected>
                     Выберите роль
@@ -131,6 +143,7 @@ export const RegisterPage = () => {
                   className="validate yellow-input"
                   name="email"
                   onChange={changeHandler}
+                  required={true}
                 />
                 <label htmlFor="email">E-mail</label>
               </div>
@@ -143,6 +156,7 @@ export const RegisterPage = () => {
                   className="validate yellow-input"
                   name="password"
                   onChange={changeHandler}
+                  required={true}
                 />
                 <label htmlFor="password">Password</label>
               </div>
@@ -155,6 +169,7 @@ export const RegisterPage = () => {
                   className="validate yellow-input"
                   name="study_group"
                   onChange={changeHandler}
+                  required={true}
                 />
                 <label htmlFor="group">Учебная группа</label>
               </div>

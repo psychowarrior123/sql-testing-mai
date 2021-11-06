@@ -51,7 +51,7 @@ export const TestPage = () => {
 
   return (
     <div>
-      <h1 className="white-text">Тест</h1>
+      <h4 className="text-bold white-text">Тест</h4>
       <Button
         large
         node="button"
