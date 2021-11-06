@@ -46,7 +46,6 @@ router.get(
 router.post("/check", async (req, res) => {
   try {
     const { answer, check, isManipulate } = req.body;
-    const data = {};
     if (isManipulate) {
       pool.query(answer, (error, result) => {
         if (error) {
@@ -67,12 +66,6 @@ router.post("/check", async (req, res) => {
           if (error) {
             res.json({ isEqual: false });
           } else {
-            console.log(
-              "70",
-              isEqual(checkResult, result),
-              `Check result: ${checkResult}`,
-              `Result: ${result}`
-            );
             res.json({
               isEqual: isEqual(checkResult, result),
             });
