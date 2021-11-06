@@ -60,7 +60,7 @@ export const CreatePage = () => {
         message(e.message);
       }
     },
-    [form, type]
+    [form, type, message]
   );
 
   const submitUpdateHandler = useCallback(
@@ -74,7 +74,7 @@ export const CreatePage = () => {
         message(e.message);
       }
     },
-    [updateForm, updateType, id]
+    [updateForm, updateType, id, message]
   );
 
   const renderTables = useMemo(() => {
