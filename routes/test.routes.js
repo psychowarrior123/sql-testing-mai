@@ -63,16 +63,16 @@ router.post("/check", async (req, res) => {
       pool.query(check, (error, result) => {
         if (error) throw error;
 
-        console.log(result, check);
+        console.log("66", result, check);
 
         data.check = result;
       });
       pool.query(answer, (error, result) => {
         if (error) {
-          console.log(data.check, result, answer);
+          console.log("72", data.check, result, answer);
           res.json({ isEqual: false });
         } else {
-          console.log(data.check, result, answer);
+          console.log("75", data.check, result, answer);
           res.json({
             isEqual: isEqual(data.check, result),
           });
