@@ -9,7 +9,7 @@ import { TestPage } from "./pages/TestPage/TestPage";
 import { TestContext } from "./context/TestContext";
 import { useTest } from "./hooks/test.hook";
 
-export const useRoutes = (isAuthenticated) => {
+export const useRoutes = (isAuthenticated, profile) => {
   const { testResults, resultsIncrement, allTasks, tasksIncrement, dropTasks } =
     useTest();
   if (isAuthenticated) {
@@ -18,26 +18,33 @@ export const useRoutes = (isAuthenticated) => {
         <Route path="/tables" exact>
           <TablesPage />
         </Route>
-        <Route path="/create" exact>
-          <CreatePage />
-        </Route>
+
+        {profile?.role === "admin" && (
+          <Route path="/create" exact>
+            <CreatePage />
+          </Route>
+        )}
+
         <Route path="/home" exact>
           <HomePage />
         </Route>
-        <Route path="/test" exact>
-          <TestContext.Provider
-            value={{
-              resultsIncrement,
-              tasksIncrement,
-              testResults,
-              allTasks,
-              dropTasks,
-              isFinished: true,
-            }}
-          >
-            <TestPage />
-          </TestContext.Provider>
-        </Route>
+        {profile?.role === "student" && (
+          <Route path="/test" exact>
+            <TestContext.Provider
+              value={{
+                resultsIncrement,
+                tasksIncrement,
+                testResults,
+                allTasks,
+                dropTasks,
+                isFinished: true,
+              }}
+            >
+              <TestPage />
+            </TestContext.Provider>
+          </Route>
+        )}
+
         <Redirect to="/home" />
       </Switch>
     );

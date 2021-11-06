@@ -26,14 +26,16 @@ export const HomePage = () => {
   );
 
   useDidMount(async () => {
-    const { data } = await axios.get(
-      `api/marks/${mappingByRole[profile?.role]}`
-    );
-    if (profile?.role === "student") {
-      setMarks(data);
-    }
-    if (profile?.role === "teacher") {
-      setStudents(data);
+    if (profile?.role !== "admin") {
+      const { data } = await axios.get(
+        `api/marks/${mappingByRole[profile?.role]}`
+      );
+      if (profile?.role === "student") {
+        setMarks(data);
+      }
+      if (profile?.role === "teacher") {
+        setStudents(data);
+      }
     }
   });
 

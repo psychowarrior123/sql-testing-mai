@@ -70,7 +70,7 @@ export const Navbar = () => {
                 Начать тест
               </SideNavItem>
             )}
-            {auth.profile.role === "teacher" && (
+            {auth.profile.role === "admin" && (
               <SideNavItem
                 href="/create"
                 className="black-text waves-effect text-bold"
@@ -138,7 +138,7 @@ export const Navbar = () => {
                   Начать тест
                 </NavLink>
               )}
-              {auth.profile.role === "teacher" && (
+              {auth.profile.role === "admin" && (
                 <NavLink
                   to="/create"
                   className="black-text waves-effect text-bold"

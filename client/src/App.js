@@ -11,7 +11,7 @@ import { Navbar } from "./components/Navbar";
 function App() {
   const { token, login, logout, userId, ready, profile } = useAuth();
   const isAuthenticated = !!token;
-  const routes = useRoutes(isAuthenticated);
+  const routes = useRoutes(isAuthenticated, profile);
 
   if (!ready) {
     return <Loader />;
