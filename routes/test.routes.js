@@ -60,23 +60,24 @@ router.post("/check", async (req, res) => {
         }
       });
     } else {
-      pool.query(check, (error, result) => {
-        if (error) throw error;
+      pool.query(check, (checkError, checkResult) => {
+        if (checkError) throw checkError;
 
-        console.log("66", result, check);
-
-        data.check = result;
-      });
-      pool.query(answer, (error, result) => {
-        if (error) {
-          console.log("72", data, result, answer);
-          res.json({ isEqual: false });
-        } else {
-          console.log("75", data, result, answer);
-          res.json({
-            isEqual: isEqual(data.check, result),
-          });
-        }
+        pool.query(answer, (error, result) => {
+          if (error) {
+            res.json({ isEqual: false });
+          } else {
+            console.log(
+              "70",
+              isEqual(checkResult, result),
+              `Check result: ${checkResult}`,
+              `Result: ${result}`
+            );
+            res.json({
+              isEqual: isEqual(checkResult, result),
+            });
+          }
+        });
       });
     }
   } catch (e) {
