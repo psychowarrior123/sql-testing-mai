@@ -93,10 +93,12 @@ export const HomePage = () => {
                       hour: "numeric",
                       minute: "numeric",
                     };
-                    props.row.createdAt = date.toLocaleDateString(
-                      "ru-RU",
-                      options
-                    );
+
+                    props.row.createdAt =
+                      date.toLocaleDateString("ru-RU", options) !==
+                      "Invalid Date"
+                        ? date.toLocaleDateString("ru-RU", options)
+                        : props.row.createdAt;
                     return (
                       <Row
                         onDoubleClick={async (e) => {

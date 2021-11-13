@@ -35,7 +35,7 @@ export const useRoutes = (isAuthenticated, profile) => {
                 testResults,
                 allTasks,
                 dropTasks,
-                isFinished: true,
+                isFinished: allTasks === 15,
               }}
             >
               <TestPage />

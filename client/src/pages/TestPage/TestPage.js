@@ -20,7 +20,7 @@ export const TestPage = () => {
     profile: { fullname },
   } = useContext(AuthContext);
   const history = useHistory();
-  const { message } = useMessage();
+  const message = useMessage();
 
   const refetch = async () => {
     const { data } = await axios.get(`/api/test/generate`);
@@ -32,13 +32,13 @@ export const TestPage = () => {
   };
 
   const submitResults = async () => {
-    const { data } = axios.post("api/marks", {
+    const { data } = await axios.post("api/marks", {
       fullname,
       mark: `${testResults}/${allTasks}`,
     });
     message(data.message);
     dropTasks();
-    history.push("/home");
+    history.push("/");
   };
 
   return (
