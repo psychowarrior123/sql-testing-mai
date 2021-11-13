@@ -38,7 +38,7 @@ export const TestPage = () => {
     });
     message(data.message);
     dropTasks();
-    history.push("/");
+    history.push("/home");
   };
 
   return (

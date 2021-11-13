@@ -18,13 +18,11 @@ export const useRoutes = (isAuthenticated, profile) => {
         <Route path="/tables" exact>
           <TablesPage />
         </Route>
-
         {profile?.role === "admin" && (
           <Route path="/create" exact>
             <CreatePage />
           </Route>
         )}
-
         <Route path="/home" exact>
           <HomePage />
         </Route>
