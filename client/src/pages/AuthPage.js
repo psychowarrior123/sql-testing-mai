@@ -23,7 +23,7 @@ export const AuthPage = () => {
   const history = useHistory();
   return (
     <AuthContainer>
-      <h1>Auth Page</h1>
+      <h4 className="text-bold white-text">Войти или зарегистрироваться</h4>
       <Login
         className="waves-effect waves-dark btn-large grey"
         id="login"
