@@ -57,7 +57,6 @@ export const TablesPage = () => {
   }, []);
 
   const renderTables = (flatTable) => {
-    console.log(flatTable);
     return Object.entries(flatTable)
       ?.sort(
         ([, a], [, b]) => Object.keys(b[0]).length - Object.keys(a[0]).length
