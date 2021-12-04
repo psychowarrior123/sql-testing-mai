@@ -36,8 +36,7 @@ router.get("/:name", async (req, res) => {
 // refresh tables /api/tables/refresh/
 router.post("/refresh", async (req, res) => {
   try {
-    await pool.query(query.drop);
-    query.create.split("; ").forEach(async (item) => {
+    query.create.split(";\n").forEach(async (item) => {
       await pool.query(item);
     });
 
